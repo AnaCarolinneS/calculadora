@@ -136,15 +136,15 @@ body {
 }
 
 .calculadora__display {
-  background-color: #222222;
-  color: #fff;
+  background-color: #fff ;
+  color: #222222;
   font-size: 1.714285714em;
   padding: 0.5em 0.75em;
   text-align: right;
 }
 
 .calculadora__keys {
-  background-color: #999;
+  background-color: #fff;
   display: grid;
   grid-gap: 1px;
   grid-template-columns: repeat(4, 1fr);
@@ -172,11 +172,14 @@ body {
 }
 
 .key--operator {
-  background-color: #eee;
+  background-color: #fff;
+  color: #ff7804;
 }
 
 .key--equal {
-  background-image: linear-gradient(to bottom, #3ebce2, #3ebce2);
+  background-image: linear-gradient(to bottom, #ff7804, #ff7804);
   grid-column: -2;
-  grid-row: 2 / span 4;
+  color: #fff;
+  grid-row: 5 / span 1;
+  
 }
