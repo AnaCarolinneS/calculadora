@@ -1,5 +1,5 @@
-const calculadora = document.querySelector('.calculadora')
-const keys = calculadora.querySelector('.calculadora__keys')
+const calculadora = document.querySelector('.calculator')
+const keys = calculadora.querySelector('.calculator__keys')
 
 keys.addEventListener('click', e => {
 
