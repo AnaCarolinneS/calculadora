@@ -45,7 +45,7 @@ keys.addEventListener('click', e => {
 
     const calculate = (n1, operator, n2) => {
       let result = ''
-  
+
       if (operator === 'add') {
         result = parseFloat(n1) + parseFloat(n2)
       } else if (operator === 'subtract') {
@@ -55,7 +55,7 @@ keys.addEventListener('click', e => {
       } else if (operator === 'divide') {
         result = parseFloat(n1) / parseFloat(n2)
       }
-      
+
       return result
     }
 
@@ -63,12 +63,12 @@ keys.addEventListener('click', e => {
       const firstValue = calculadora.dataset.firstValue
       const operator = calculadora.dataset.operator
       const secondValue = displayedNum
-      
+
       display.textContent = calculate(firstValue, operator, secondValue)
     }
 
-  if (action === 'decimal') {
-    display.textContent = displayedNum + '.'
-  }
+    if (action === 'decimal') {
+      display.textContent = displayedNum + '.'
+    }
   }
 })
