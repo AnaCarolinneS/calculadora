@@ -1,6 +1,9 @@
 const calculadora = document.querySelector('.calculadora')
 const keys = calculadora.querySelector('.calculadora__keys')
 const display = document.querySelector('.calculadora__display')
+const string = 'The hamburgers taste pretty good!'
+const hasExclamation = string.includes('!')
+console.log(hasExclamation) // true
 
 keys.addEventListener('click', e => {
 
