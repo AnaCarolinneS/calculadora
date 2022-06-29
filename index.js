@@ -34,8 +34,9 @@ keys.addEventListener('click', e => {
 
     const previousKeyType = calculadora.dataset.previousKeyType
 
-    if (action === 'clear') {
-      console.log('clear key!')
+    if (action == 'clear') {
+      console.log('cl5555 key!')
+      calculadora.dataset.previousKeyType = '0'
     }
 
     if (!action) {
@@ -44,6 +45,7 @@ keys.addEventListener('click', e => {
       } else {
         display.textContent = displayedNum + keyContent
       }
+      calculadora.dataset.previousKey = 'number'
     }
 
     const calculate = (n1, operator, n2) => {
@@ -68,10 +70,17 @@ keys.addEventListener('click', e => {
       const secondValue = displayedNum
 
       display.textContent = calculate(firstValue, operator, secondValue)
+      calculadora.dataset.previousKeyType = 'calculate'
     }
 
     if (action === 'decimal') {
-      display.textContent = displayedNum + '.'
+      if (!displayedNum.includes('.')) {
+        display.textContent = displayedNum + '.'
+      } else if (previousKeyType === 'operator') {
+        display.textContent = '0.'
+      }
+      
+    calculator.dataset.previousKeyType = 'decimal'
     }
   }
 })
