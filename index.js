@@ -1,9 +1,6 @@
 const calculadora = document.querySelector('.calculadora')
 const keys = calculadora.querySelector('.calculadora__keys')
 const display = document.querySelector('.calculadora__display')
-const string = 'The hamburgers taste pretty good!'
-const hasExclamation = string.includes('!')
-console.log(hasExclamation) // true
 
 keys.addEventListener('click', e => {
 
@@ -24,7 +21,8 @@ keys.addEventListener('click', e => {
       action === 'add' ||
       action === 'subtract' ||
       action === 'multiply' ||
-      action === 'divide'
+      action === 'divide' ||
+      action === 'percentual'
     ) {
       key.classList.add('is-depressed')
       calculadora.dataset.previousKeyType = 'operator'
@@ -34,9 +32,14 @@ keys.addEventListener('click', e => {
 
     const previousKeyType = calculadora.dataset.previousKeyType
 
-    if (action == 'clear') {
-      console.log('cl5555 key!')
-      calculadora.dataset.previousKeyType = '0'
+    if (action === 'clear') {
+      display.textContent = '0'
+    }
+
+    if (action === 'clear-all') {
+      display.textContent = '0'
+      calculadora.dataset.firstValue = 0
+      calculadora.dataset.secondValue = 0
     }
 
     if (!action) {
@@ -45,12 +48,11 @@ keys.addEventListener('click', e => {
       } else {
         display.textContent = displayedNum + keyContent
       }
-      calculadora.dataset.previousKey = 'number'
     }
 
     const calculate = (n1, operator, n2) => {
       let result = ''
-
+  
       if (operator === 'add') {
         result = parseFloat(n1) + parseFloat(n2)
       } else if (operator === 'subtract') {
@@ -59,8 +61,10 @@ keys.addEventListener('click', e => {
         result = parseFloat(n1) * parseFloat(n2)
       } else if (operator === 'divide') {
         result = parseFloat(n1) / parseFloat(n2)
+      } else if (operator === 'percentual') {
+        result = (parseFloat(n1) * parseFloat(n2)) / 100
       }
-
+      
       return result
     }
 
@@ -68,19 +72,12 @@ keys.addEventListener('click', e => {
       const firstValue = calculadora.dataset.firstValue
       const operator = calculadora.dataset.operator
       const secondValue = displayedNum
-
-      display.textContent = calculate(firstValue, operator, secondValue)
-      calculadora.dataset.previousKeyType = 'calculate'
-    }
-
-    if (action === 'decimal') {
-      if (!displayedNum.includes('.')) {
-        display.textContent = displayedNum + '.'
-      } else if (previousKeyType === 'operator') {
-        display.textContent = '0.'
-      }
       
-    calculator.dataset.previousKeyType = 'decimal'
+      display.textContent = calculate(firstValue, operator, secondValue)
     }
+
+  if (action === 'decimal') {
+    display.textContent = displayedNum + '.'
+  }
   }
 })
